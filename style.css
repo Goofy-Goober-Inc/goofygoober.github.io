@@ -9,9 +9,17 @@
     font-style: normal;
 }
 
-#main {
+:root {
+    --back: #0827f5;
+    --accent: #c3c3c3;
+}
+
+section {
     min-height: 100dvh;
     background: blue;
+}
+
+#main {
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -25,6 +33,8 @@
 
 .ticker li {
     font-size: 20em;
+    line-height: 10px;
+    margin-bottom: 0;
     transform: scale(1, 2.5);
 }
 
@@ -39,5 +49,78 @@
 @keyframes rtl {
     to {
         transform: translateX(calc(-100% - 5rem));
+    }
+}
+
+.section-name {
+    overflow: hidden;
+    opacity: 0;
+
+    animation: fade-in linear;
+    animation-timeline: view(y);
+}
+
+.section-name ul {
+    display: flex;
+    transform: translateX(-10%);
+    white-space: nowrap;
+    gap: 2rem;
+}
+
+#html {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.section-main-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.button {
+    margin-top: .5em;
+    box-shadow: black 5px 5px;
+    background: var(--accent);
+    padding: 1em;
+    text-decoration: none;
+}
+
+@keyframes fade-in {
+    to {
+        opacity: 1;
+    }
+}
+
+/* oh yeah... shit */
+.hidden {
+    display: none;
+    background: black;
+    height: 100dvh;
+}
+
+.hidden > div {
+    position: absolute;
+    /* how do i center a div? */
+    top: 50%;
+    transform: translateY(-50%);
+    left: 50%;
+    transform: translateX(-50%);
+    /* i fucked up */
+    text-align: center;
+    white-space: nowrap;
+}
+
+@media (max-width: 485px) {
+    .content {
+        display: none;
+    }
+
+    .hidden {
+        display: block;
     }
 }
