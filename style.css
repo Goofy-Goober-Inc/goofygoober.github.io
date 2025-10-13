@@ -7,6 +7,7 @@
     font-family: "BBH Sans Bartle", sans-serif;
     font-weight: 400;
     font-style: normal;
+    scroll-behavior: smooth;
 }
 
 :root {
@@ -56,11 +57,30 @@ section {
     }
 }
 
+@keyframes ltr {
+    from {
+        transform: translateX(calc(-100% - 2rem));
+    }
+    to {
+        transform: translateX(0%);
+    }
+}
+
 .section-name {
     overflow: hidden;
+    display: flex;
+    gap: 2rem;
 
     animation: fade-in linear;
     animation-timeline: view();
+}
+
+.bottom {
+    animation: none;
+}
+
+.bottom ul {
+    animation: rtl 30s linear infinite !important;
 }
 
 .section-name ul {
@@ -68,12 +88,8 @@ section {
     transform: translateX(-10%);
     white-space: nowrap;
     gap: 2rem;
-}
 
-#html {
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    animation: ltr 30s linear infinite;
 }
 
 .section-main-content {
@@ -86,16 +102,36 @@ section {
     gap: .5em;
 }
 
+#html {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
 /* #html .section-main-content p > span {
     background: #008080;
 } */
 
-.button {
+.button, .link {
     margin-top: .5em;
     box-shadow: black 5px 5px;
     background: var(--accent);
     padding: 1em;
     text-decoration: none;
+}
+
+.navbar {
+    position: fixed;
+    margin-top: 1.5em;
+    z-index: 999;
+}
+
+.links {
+    position: relative;
+}
+
+.navbar .link {
+    padding: .2em !important;
 }
 
 @keyframes fade-in {
@@ -138,3 +174,4 @@ section {
         background: black;
     }
 }
+
